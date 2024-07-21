@@ -1,0 +1,39 @@
+ .container .calc-app {
+     width: 400px;
+ }
+
+ .container .symbols div {
+     width: calc(100% / 5) !important;
+     height: 50px;
+     background-color: hsl(0, 0%, 100%);
+     color: hsl(225, 21%, 49%);
+     box-shadow: 0px 1px 0px 1px hsl(224, 28%, 35%);
+     cursor: pointer;
+     transition: 0.5s;
+     -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+     -ms-transition: 0.5s;
+     -o-transition: 0.5s;
+ }
+
+ .container .symbols div:hover {
+     opacity: 0.7;
+ }
+
+ .container .screen {
+     overflow-x: auto;
+ }
+
+ .active {
+     background-color: hsl(25, 98%, 40%);
+     transition: 0.5s;
+     border-radius: 25%;
+     -webkit-transition: 0.5s;
+     -moz-transition: 0.5s;
+     -ms-transition: 0.5s;
+     -o-transition: 0.5s;
+     -webkit-border-radius: 25%;
+     -moz-border-radius: 25%;
+     -ms-border-radius: 25%;
+     -o-border-radius: 25%;
+ }

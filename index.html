@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <title>Frontend Mentor | Calculator app</title>
+    <!-- boostrap css cdn -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    style="
+      font-family: 'League Spartan', sans-serif;
+      font-optical-sizing: auto;
+      background-color: hsl(222, 26%, 31%);
+      transition: 0.5s;
+    "
+  >
+    <div class="container">
+      <div
+        class="calc-app m-auto mt-5"
+        style="color: hsl(0, 0%, 100%); transition: 0.5s"
+      >
+        <div
+          class="header d-flex justify-content-between align-items-center mb-2 p-2"
+        >
+          <div class="title fs-3 text-capitalize fw-bold">calc</div>
+          <div
+            class="theme d-flex justify-content-between align-items-center p-1 rounded"
+            style="background-color: hsl(223, 31%, 20%); transition: 0.5s"
+          >
+            <div class="theme-title me-5 fs-4">theme</div>
+            <div class="theme-nums fs-6 text-center" style="width: 90px">
+              <span class="active fw-bold p-2" style="cursor: pointer">1</span>
+              <span class="fw-bold p-2" style="cursor: pointer">2</span>
+              <span class="fw-bold p-2" style="cursor: pointer">3</span>
+            </div>
+          </div>
+        </div>
+        <div
+          id="screen"
+          class="screen mb-2 p-4 border-0 fs-3 text-end rounded fw-bold"
+          style="
+            background-color: hsl(224, 36%, 15%);
+            color: hsl(0, 0%, 100%);
+            height: 90px;
+          "
+        ></div>
+        <div
+          class="symbols p-4 rounded d-flex justify-content-between align-items-center flex-wrap gap-1"
+          style="background-color: hsl(223, 31%, 20%); transition: 0.5s"
+        >
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('7')"
+          >
+            7
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('8')"
+          >
+            8
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('9')"
+          >
+            9
+          </div>
+          <div
+            class="delete text-center p-2 fs-2 rounded fw-bold m-1"
+            style="
+              color: hsl(0, 0%, 100%);
+              background-color: hsl(225, 21%, 49%);
+            "
+            onclick="backspace()"
+          >
+            DEL
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('4')"
+          >
+            4
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('5')"
+          >
+            5
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('6')"
+          >
+            6
+          </div>
+          <div
+            class="symbol text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('+')"
+          >
+            +
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('1')"
+          >
+            1
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('2')"
+          >
+            2
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('3')"
+          >
+            3
+          </div>
+          <div
+            class="symbol text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('-')"
+          >
+            -
+          </div>
+          <div
+            class="symbol dot text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('.')"
+          >
+            .
+          </div>
+          <div
+            class="num text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('0')"
+          >
+            0
+          </div>
+          <div
+            class="symbol text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('/')"
+          >
+            /
+          </div>
+          <div
+            class="symbol text-center p-2 fs-2 rounded fw-bold m-1"
+            onclick="appendToScreen('*')"
+          >
+            x
+          </div>
+          <div
+            class="reset text-center p-2 fs-2 rounded fw-bold m-1"
+            style="
+              width: calc(90% / 2) !important;
+              color: hsl(0, 0%, 100%);
+              background-color: hsl(225, 21%, 49%);
+            "
+            onclick="clearScreen()"
+          >
+            RESET
+          </div>
+          <div
+            class="equal text-center p-2 fs-2 rounded fw-bold m-1"
+            style="
+              width: calc(90% / 2) !important;
+              background-color: hsl(6, 63%, 50%);
+              color: hsl(0, 0%, 100%);
+            "
+            onclick="calculate()"
+          >
+            =
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="attribution mt-4 text-center">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by
+        <a
+          href="https://github.com/shawky-13"
+          target="_blank"
+          class="text-uppercase"
+          >shawky</a
+        >.
+      </div> -->
+    </div>
+
+    <!-- bootstrap js cdn  -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/main2.js"></script>
+  </body>
+</html>
